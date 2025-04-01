@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 from django.utils.timezone import now
 
 class Habit(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='habits')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='habits')
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     start_time = models.TimeField()
@@ -11,6 +11,9 @@ class Habit(models.Model):
     location = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.title} (criado em {self.created_at})"
 
 class CheckIn(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE, related_name='check_ins')

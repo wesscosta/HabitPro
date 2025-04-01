@@ -1,9 +1,7 @@
-# views.py
 from rest_framework import viewsets
-from .models import Habit, CheckIn
-from .serializers import HabitSerializer, CheckInSerializer
+from habits.models import Habit, CheckIn
+from habits.api.serializers import HabitSerializer, CheckInSerializer
 from django.core.serializers import serialize
-
 
 class HabitViewSet(viewsets.ModelViewSet):
     queryset = Habit.objects.all()

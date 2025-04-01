@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Habit, CheckIn
+from habits.models import Habit, CheckIn
 
 class HabitSerializer(serializers.ModelSerializer):
     class Meta:
