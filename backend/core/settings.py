@@ -28,30 +28,31 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
-
-#Pacotes e Bibliotecas
-INSTALLED_APPS += [
+    
+    # Third-party Apps
     'rest_framework',
-]
-
-#Apps
-INSTALLED_APPS += [
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    
+    # Local Apps
     'habits',
     'users'
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+   'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 

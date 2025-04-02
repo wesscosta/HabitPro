@@ -20,3 +20,6 @@ class CheckIn(models.Model):
     check_in_time = models.DateTimeField(default=now)
     location = models.CharField(max_length=255, blank=True, null=True)
     status = models.BooleanField(default=False)  # Concluído ou não
+    
+    def __str__(self):
+        return f"{self.habit.title} ➔ check-in {self.check_in_time} ({self.status})"

@@ -6,6 +6,4 @@ router = DefaultRouter()
 router.register(r'habits', HabitViewSet, basename='habit')
 router.register(r'checkins', CheckInViewSet, basename='checkin')
 
-urlpatterns = [
-    path('api/habits/', include(router.urls)),
-]
+urlpatterns = router.urls
